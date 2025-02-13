@@ -44,7 +44,7 @@ public class OperatorPractice {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("이름 : ");
-		String input3 = sc.nextLine();
+		String input3 = sc.next();
 		
 		System.out.print("학년(정수만) :  ");
 		int input4 = sc.nextInt();
@@ -54,20 +54,21 @@ public class OperatorPractice {
 		
 		System.out.print("번(정수만) :  ");
 		int input8 = sc.nextInt();
-
-		System.out.print("성별(남학생/여학생) : ");
-		String input6 = sc.nextLine();
 		
 		sc.nextLine();
+
+		System.out.print("성별(남학생/여학생) : ");
+		String input6 = sc.next();
+		
 		
 		System.out.print("성적(소수점 아래 둘째 자리까지) :  ");
 		double input7 = sc.nextDouble();
 		
 		System.out.println();
 		
-		System.out.printf("%d%s %d%s %d%s %s %s%s %.2f%s", input4, "학년", input5, "반", input8, "번", input3, input6, "의 성적은",  input7, "이다.");
+		//System.out.printf("%d%s %d%s %d%s %s %s%s %.2f%s", input4, "학년", input5, "반", input8, "번", input3, input6, "의 성적은",  input7, "이다.");
 		
-		
+		System.out.printf("%d학년 %d반 %d번 %s %s의 성적은 %.2f이다.", input4, input5, input8, input3, input6, input7);
 		
 	}
 
@@ -94,10 +95,18 @@ public class OperatorPractice {
 		System.out.print("수학 : ");
 		int inpt3 = sc.nextInt();
 		
-		int num = inpt + inpt2 + inpt3;
+		int sum = inpt + inpt2 + inpt3;
+		double avg = sum / 3.0;
 		
-		System.out.println("합계 : " + (inpt + inpt2 + inpt3) );
-		System.out.println("평균 : " + (num / 3.0));
+		System.out.println("합계 : " + sum );
+		System.out.printf("평균 : %.1f\n", avg);
+		
+		// 각 과목이 40점 이상, 평균 60이상 합격
+		// 그 외 불합격 출력
+		
+		boolean result = (inpt >= 40)&&(inpt2 >= 40)&&(inpt3 >=40) && (avg >= 60);
+		
+		System.out.println(result ? "합격" : "불합격");
 	}
 }
 

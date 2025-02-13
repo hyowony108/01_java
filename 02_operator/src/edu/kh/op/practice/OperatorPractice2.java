@@ -27,13 +27,24 @@ public class OperatorPractice2 {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("당신의 나이는? :");
-		int input = sc.nextInt();
+		System.out.print("당신의 나이는? : ");
+		int age = sc.nextInt();
 		
-		System.out.println(input >= 20 ? "저는 성인 입니다" : "저는 미성년 입니다");
+		/*
+		System.out.println(age >= 20 ? "저는 성인 입니다" : "저는 미성년 입니다");
 		
-		System.out.println( (13<= input) || (input <= 19) ? "청소년 입니까? true" : "청소년 입니까? false");
+		System.out.println( (13<= age) || (age <= 19) ? "청소년 입니까? true" : "청소년 입니까? false");
 
-		System.out.println(((input >= 60) || (input <=12)) ? "노인이거나 어린이 입니까? true" : "노인이거나 어린이 입니까? false");
+		System.out.println(((age >= 60) || (age <=12)) ? "노인이거나 어린이 입니까? true" : "노인이거나 어린이 입니까? false");
+	*/
+		
+		String personType = (age >= 20) ? "성인" : "미성년";
+		System.out.println("저는 " + personType + " 입니다");
+		
+		boolean isTeenager = (age >=13) && (age <= 19);
+		System.out.println("청소년 입니까? "+ isTeenager);
+		
+		boolean old = (age >= 65) && (age <= 13);
+		System.out.println("노인이거나 어린이 입니까? " + old);
 	}
 }

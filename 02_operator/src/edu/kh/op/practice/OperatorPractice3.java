@@ -36,8 +36,19 @@ public class OperatorPractice3 {
 
 		System.out.print("멤버십 있으세요? (있으면 true/ 없으면 false 입력) : ");
 		boolean i2 = sc.nextBoolean();
+		
+		//double membership = i2 ? i * d : (i - i * d2); 
+		
+		//System.out.println("할인을 포함한 최종 금액 : " + membership + "원");
 
-		System.out.println(i2 ? s + i * d : s + (i - (i * d2)));
+		//System.out.println(i2 ? s + i * d : s + (i - (i * d2)));
+		
+		double discont = i2 ? i * 0.10 : i * 0.05;
+		
+		double finalDiscont = i - discont;
+		
+		System.out.println("할인율 : " + discont + "원");
+		System.out.println(s + finalDiscont + "원");
 	}
 
 	public void practice2() {
@@ -64,8 +75,9 @@ public class OperatorPractice3 {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		
 		System.out.print("출금할 금액 입력 : ");
-		int inpt = sc.nextInt();
+		/*int inpt = sc.nextInt();
 		
 		int a = inpt / 50000;
 		int b = inpt % 50000;
@@ -73,12 +85,31 @@ public class OperatorPractice3 {
 		int d = b % 10000;
 		int e = d / 5000;
 		int f = d % 5000;
-		int g = f / 1000;
+		int g = f / 1000; 
 		
-		System.out.println("50000원 : " + a);
+		*System.out.println("50000원 : " + a);
 		System.out.println("10000원 : " + c);
 		System.out.println("5000원 : " + e);
-		System.out.println("1000원 : " + g);
+		System.out.println("1000원 : " + g);*/
+		int amount = sc.nextInt();
+		
+		int fifyTh = amount / 50000;
+		// amount = amount % 50000; // 재대입
+		// 나머지 값을 amount 변수에 재대입해야 아래 다름 지폐에서 재사용 할 수 있음.
+		amount %= 50000; // 복합대입연산자 (%와 =을 합쳐서 사용)
+		
+		int tenTh = amount / 10000;
+		amount %= 10000;
+		
+		int fiveTh = amount / 5000;
+		amount %= 5000;
+		
+		int oneTh = amount / 1000;
+		
+		System.out.println("50000원 : " + fifyTh);
+		System.out.println("10000원 : " + tenTh);
+		System.out.println("5000원 : " + fiveTh);
+		System.out.println("1000원 : " + oneTh);
 	}
 	
 	public void practice3() {
@@ -105,7 +136,7 @@ public class OperatorPractice3 {
 		System.out.print("두 번째 수 : ");
 		int ip2 = sc.nextInt();
 		
-		System.out.println((ip % ip2)== 0 ? "배수입니다" : "배수가 아닙니다");
+		System.out.println(ip % ip2 == 0 ? "배수입니다" : "배수가 아닙니다");
 		
 	}
 }
