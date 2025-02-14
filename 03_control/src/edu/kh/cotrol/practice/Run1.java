@@ -4,7 +4,7 @@ public class Run1 {
 
 	public static void main(String[] args) {
 
-		ConditionPractice condition = new ConditionPractice();
+		ConditionPractice2 condition = new ConditionPractice2();
 		//condition.practice1();
 		//condition.practice2();
 		//condition.practice3();
