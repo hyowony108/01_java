@@ -1,6 +1,7 @@
 package edu.kh.array.practice.run;
 
 import edu.kh.array.practice.service.PracticeService;
+import edu.kh.array.practice.service.PracticeService2;
 
 public class PracticeRun {
 
@@ -20,7 +21,10 @@ public class PracticeRun {
 		//practiceSer.practice11();
 		//practiceSer.practice12();
 		//practiceSer.practice13();
-		practiceSer.practice14();
+		//practiceSer.practice14();
+		
+		PracticeService2 pSer = new PracticeService2();
+		pSer.ex13();
 	}
 
 }
