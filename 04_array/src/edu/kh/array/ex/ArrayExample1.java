@@ -1,4 +1,4 @@
-package adu.kh.array.ex;
+package edu.kh.array.ex;
 
 import java.util.Arrays;
 
