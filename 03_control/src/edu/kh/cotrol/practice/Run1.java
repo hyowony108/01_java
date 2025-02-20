@@ -9,7 +9,15 @@ public class Run1 {
 		//condition.practice2();
 		//condition.practice3();
 		//condition.practice4();
-		condition.practice5();
+		//condition.practice5();
+		
+		Practice con= new Practice();
+		//con.ex1();
+		//con.ex2();
+		//con.ex3();
+		//con.ex4();
+		con.ex5();
+		
 	}
 
 }
