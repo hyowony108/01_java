@@ -328,6 +328,29 @@ public class LoopPractice {
 			*****
 */
 		
+		System.out.print("정수 입력 : ");
+		int input = sc.nextInt();
+		
+		for(int row = 1 ; row <= input ; row++) {
+			if(row == 1 || row == input) {
+				for(int col = 1 ; col <= input ; col++) {
+					System.out.print("*");
+					
+					}
+			
+				}else {
+					for(int col = 1; col <= input ; col++) {
+						if(col ==1 || col == input) {
+							System.out.print("*");
+						}else {
+							System.out.print(" ");
+						}
+					}
+			}
+			System.out.println();
+		}
+		
+		
 	}
 	
 	public void practice13(){
@@ -351,6 +374,8 @@ public class LoopPractice {
 		for(int i = 1 ; i <= input ; i++) {
 			if(i % 2 == 0 && i % 3 == 0) {
 				count++;
+				
+			}else if(i % 2 == 0 || i % 3 == 0) {
 				System.out.print(i + " ");
 			}
 			
