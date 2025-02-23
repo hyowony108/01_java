@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import edu.kh.practice.snack.controller.SnackController;
 
+//view : 사용자에게 보여줄 응답화면 관련된 코드가 모인 패키지
 public class SnackMenu {
 
 	private Scanner sc = new Scanner(System.in);
@@ -31,7 +32,7 @@ public class SnackMenu {
 		System.out.print(scr.saveData(kind, name, flavor, numOf, price));
 		String input = sc.next();
 		
-		if(input == "y") {
+		if(input.equals("y")) {
 			System.out.println(scr.confirmData());
 		}
 	}

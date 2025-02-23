@@ -23,8 +23,6 @@ public class Snack {
 		return kind + "(" + name + "-" + flavor + ") " + numOf + "개" + price + "원" ;
 	}
 	
-	
-
 	public String getKind() {
 		return kind;
 	}
