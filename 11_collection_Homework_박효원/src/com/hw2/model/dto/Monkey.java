@@ -10,7 +10,7 @@ public class Monkey extends Animal{
 
 	@Override
 	public void sound() {
-		System.out.println("원숭이가 우끼끼 소리를 냅니다.");
+		System.out.println(name + "가 우끼끼 소리를 냅니다.");
 	}
 	
 }

@@ -45,11 +45,11 @@ public class Service {
 			switch(num){
 			case 1 : System.out.println(addBook()); break;
 			case 2 : serchBook(); break;
-			case 3 : ; break;
-			case 4 : ; break;
-			case 5 : ; break;
-			case 6 : ; break;
-			case 7 : ; break;
+			case 3 : editBook(); break;
+			case 4 : delBook(); break;
+			case 5 :  break;
+			case 6 :  break;
+			case 7 : randomBook(); break;
 			case 0 : System.out.println("프로그램을 종료합니다."); break;
 			default : System.out.println("메뉴 번호만 입력해주세요.");
 			}
@@ -98,47 +98,124 @@ public class Service {
 		System.out.print("수정할 도서 번호를 입력하세요 : ");
 		int input = sc.nextInt();
 		
-		System.out.println("1. 도서명");
-		System.out.println("2. 도서 저자");
-		System.out.println("3. 도서 가격");
-		System.out.println("4. 도서 출판사");
-		System.out.println("0. 수정 종료");
-		System.out.print("어떤 정보를 수정하시겠습니까? : ");
-		int edit = sc.nextInt();
+		boolean flag = true;
 		
-		Book b;
-		int num = 0;
-		
-		for(int i = 0 ; i < bookList.size() ; i++) {
-			if(input == bookList.get(i).getNumber()) {
-				num = i;
-				break;
-			}
-		}
-		
-		switch(edit) {
-		case 1 : 
-			System.out.print("수정할 도서명을 입력하세요 : ");
-			String title = sc.nextLine();
-			sc.nextLine();
+		//향상된 for문
+		for(Book b : bookList) {
+			
+			
+			if(input == b.getNumber()) {
+				
+				flag = false;
+				
+				System.out.println("1. 도서명");
+				System.out.println("2. 도서 저자");
+				System.out.println("3. 도서 가격");
+				System.out.println("4. 도서 출판사");
+				System.out.println("0. 수정 종료");
+				System.out.print("어떤 정보를 수정하시겠습니까? : ");
+				int edit = sc.nextInt();
+				sc.nextLine();
+				
+				switch(edit) {
+				case 1 : 
+					System.out.println("===도서명 수정===");
+					System.out.print("수정할 도서명을 입력하세요 : ");
+					String title = sc.nextLine();
 
+					b.setTitle(title);
+					break;
+					
+				case 2 : 
+					System.out.println("===저자 수정===");
+					System.out.print("수정할 저자를 입력하세요 : ");
+					String author = sc.nextLine();
+
+					b.setAuthor(author);
+					break;
+					
+				case 3 : 
+					System.out.println("===가격 수정===");
+					System.out.print("수정할 가격을 입력하세요 : ");
+					int price = sc.nextInt();
+					sc.nextLine();
+					
+					b.setPrice(price);
+					break;
+					
+				case 4 : 
+					System.out.println("===출판사 수정===");
+					System.out.print("수정할 출판사를 입력하세요 : ");
+					String Publisher = sc.nextLine();
+					
+					b.setPublisher(Publisher);
+					break;
+					
+				case 0 :System.out.println("수정을 종료합니다");break;
+				default : System.out.println("알맞은 번호를 입력해주세요"); break;
+				
+				}
+			}
 			
-			
-			
-			
-			break;
-		case 2 : break;
-		case 3 : break;
-		case 4 : break;
-		case 0 : break;
 		}
 		
+		if(flag = true) {
+			System.out.println("일치하는 도서 번호가 없습니다.");
+		}
 		
+		System.out.println("수정 완료");
 		
 	}
 	
+	public void delBook() {
+		
+		System.out.println("===도서 삭제===");
+		
+		serchBook();
+		
+		System.out.print("삭제할 도서 번호를 입력하세요 : ");
+		int del = sc.nextInt();
+		
+		for(Book b : bookList) {
+			
+			if(del == b.getNumber()) {
+				
+				int index = bookList.indexOf(b);
+				// int List.indexOf(Object) : List에 일치하는 객체가 있으면 그 객체가 있는 index번호 반환
+				
+				System.out.println(bookList.get(index));
+				
+				System.out.print("정말 삭제하시겠습니까? (Y/N) : ");
+				char result = sc.next().toUpperCase().charAt(0);
+				
+				if(result == 'Y') {
+					bookList.remove(index);
+					break;
+				}else {
+					System.out.println("삭제를 진행하지 않습니다.");
+				}
+				
+			}
+			
+		}
+		
+		System.out.println("삭제 끝");
+		
+	}
 	
-	
+	public void randomBook() {
+		System.out.println("===추천 도서 뽑기==");
+		
+		System.out.print("도서를 추천 받으시겠습니까? (Y/N) : ");
+		char res = sc.next().toUpperCase().charAt(0);
+		
+		if(res == 'Y') {
+			int index = (int)Math.random()*bookList.size();
+			System.out.println(bookList.get(index));
+		} else {
+			System.out.println("도서 뽑기 종료");
+		}
+	}
 	
 	
 	
