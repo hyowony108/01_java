@@ -8,6 +8,7 @@ public class BookRun {
 
 		BookService bs = new BookService();
 		
+		bs.menuDisplay();
 	}
 
 }
