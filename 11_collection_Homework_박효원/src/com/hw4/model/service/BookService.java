@@ -14,6 +14,9 @@ public class BookService {
 	// Book 타입 리스트 생성
 	List<Book> bookList = new ArrayList<>();
 	
+	// 즐겨찾기 리스트 생성
+	List<Book> favoirteList = new ArrayList<>();
+	
 	public BookService() {
 
 		// 기본적으로 제공될 책 정보를 리스트에 집어넣기
@@ -39,7 +42,8 @@ public class BookService {
 			System.out.println("4. 도서 삭제");
 			System.out.println("5. 즐겨찾기 추가");
 			System.out.println("6. 즐겨찾기 삭제");
-			System.out.println("7. 추천도서 뽑기");
+			System.out.println("7. 즐겨찾기 조회");
+			System.out.println("8. 추천도서 뽑기");
 			System.out.println("0. 프로그램 종료");
 			
 			System.out.print("메뉴를 입력하세요 : ");
@@ -53,10 +57,11 @@ public class BookService {
 				case 1 : System.out.println(addBook()); break;
 				case 2 : serchBook(); break;
 				case 3 : System.out.println(editBook()); break;
-				case 4 : //delBook(); break;
-				case 5 :  break;
-				case 6 :  break;
-				case 7 : //randomBook(); break;
+				case 4 : delBook(); break;
+				case 5 : favoriteBook(); break;
+				case 6 : delFavoBook(); break;
+				case 7 : showFavoBook(); break;
+				case 8 : randomBook(); break;
 				case 0 : System.out.println("프로그램을 종료합니다."); break;
 				default : System.out.println("메뉴 번호만 입력해주세요.");
 				}
@@ -188,8 +193,128 @@ public class BookService {
 		return "수정완료";
 	}
 
-	
+	public void delBook() {
+		System.out.println("====== 도서 삭제 ======");
+		
+		boolean falg = true;
+		
+		System.out.print("삭제할 도서 번호를 입력하세요 : ");
+		int delB = sc.nextInt();
+		
+		for(int i = 0 ; i < bookList.size() ; i++) {
+			if(bookList.get(i).getNumber() == delB) {
+				falg = false;
+				String db = bookList.get(i).getTitle();
+				System.out.println("도서명 : " + db);
+				System.out.print("정말 삭제 하시겠습니까? (Y/N): ");
+				char result = sc.next().toUpperCase().charAt(0);
+				
+				if(result == 'Y') {
+					bookList.remove(i);
+					System.out.println("도서 '" + db + "' 이(가) 삭제되었습니다.");
+				}else if(result == 'N'){
+					System.out.println("삭제 취소");
+				}else {
+					System.out.println("Y/N 중에서 입력해주세요.");
+				}
+				break;
+			}
+		}
+		if(falg == true) {
+			System.out.println("일치하는 도서가 없습니다.");
+		}
+	}
 
+	public void randomBook() {
+		System.out.println("====== 추천 도서 뽑기 ======");
+		System.out.print("도서를 추천 받으시겠습니까? (Y/N) : ");
+		char res = sc.next().toUpperCase().charAt(0);
+		
+		if(res == 'Y') {
+			
+			int random = (int)(Math.random() * bookList.size());
+			
+			System.out.println("추천 도서 : " + bookList.get(random).getTitle());
+			
+		}else if(res == 'N'){
+			System.out.println("추천 취소");
+		}else {
+			System.out.println("Y/N 중에서 입력해주세요.");
+		}
+		
+	}
 
+	public void favoriteBook() {
+		System.out.println("====== 즐겨찾기 추가 ======");
+		
+		boolean flag = true;
+		
+		System.out.print("즐겨찾기에 추가할 도서 번호를 입력하세요 : ");
+		int number = sc.nextInt();
+		
+		for(Book b : bookList) {
+			if(b.getNumber()== number) {
+				flag = false;
+				System.out.println(b);
+				
+				System.out.print("즐겨찾기에 추가하시겠습니까? (Y/N) : ");
+				char res = sc.next().toUpperCase().charAt(0);
+				
+				if(res == 'Y') {
+					
+					favoirteList.add(new Book(b.getNumber(), b.getTitle(), b.getAuthor(), b.getPrice(), b.getPublisher()));
+					System.out.println("추가 완료");
+				
+				}else if(res == 'N'){
+					System.out.println("즐겨찾기 취소");
+				}else {
+					System.out.println("Y/N 중에서 입력해주세요.");
+				}
+				break;
+			}
+		}
+		if(flag == true) {
+			System.out.println("일치하는 도서가 없습니다.");
+		}
+	}
 
+	public void delFavoBook() {
+		System.out.println("====== 즐겨찾기 삭제 ======");
+		
+		boolean falg = true;
+		
+		System.out.print("즐겨찾기에서 삭제할 도서 번호를 입력하세요 : ");
+		int delB = sc.nextInt();
+		
+		for(int i = 0 ; i < favoirteList.size() ; i++) {
+			if(favoirteList.get(i).getNumber() == delB) {
+				falg = false;
+				String db = favoirteList.get(i).getTitle();
+				System.out.println("도서명 : " + db);
+				System.out.print("정말 삭제 하시겠습니까? (Y/N): ");
+				char result = sc.next().toUpperCase().charAt(0);
+				
+				if(result == 'Y') {
+					favoirteList.remove(i);
+					System.out.println("도서 '" + db + "' 이(가) 삭제되었습니다.");
+				}else if(result == 'N'){
+					System.out.println("삭제 취소");
+				}else {
+					System.out.println("Y/N 중에서 입력해주세요.");
+				}
+				break;
+			}
+		}
+		if(falg == true) {
+			System.out.println("일치하는 도서가 없습니다.");
+		}
+	}
+
+	public void showFavoBook() {
+		System.out.println("====== 즐겨찾기 목록 ======");
+		
+		for(Book b : favoirteList) {
+			System.out.println(b);
+		}
+	}
 }
