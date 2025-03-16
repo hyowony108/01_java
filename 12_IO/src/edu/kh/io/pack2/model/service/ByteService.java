@@ -36,7 +36,7 @@ public class ByteService {
 	 */
 	public void fileByteOutput() {
 		
-		// FileOutputStream 참조 변수 선언 (OutputStream 상송받은 자식 클래스)
+		// FileOutputStream 참조 변수 선언 (OutputStream 상속받은 자식 클래스)
 		FileOutputStream fos = null;
 		
 		try {
